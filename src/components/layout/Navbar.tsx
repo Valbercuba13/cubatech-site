@@ -16,9 +16,9 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Início", href: "/" },
-    { name: "Serviços", href: "/#servicos" }, 
-    { name: "Quem Somos", href: "/#sobre" },   
-    //{ name: "Orçamento", href: "/orcamento" }, 
+    { name: "Serviços", href: "/#servicos" },
+    { name: "Quem Somos", href: "/#sobre" },
+    //{ name: "Orçamento", href: "/orcamento" },
   ];
 
   return (
@@ -28,30 +28,32 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        
         {/* Logo Area  */}
-        <Link
-          href="/"
-          className="flex flex-col items-start group min-w-max"
-        >
-          <div className="flex items-center leading-none">
-            <span className="text-3xl font-black tracking-tighter text-white">
-              CUBA
-            </span>
-            <span className="text-3xl font-black tracking-tighter text-gold ml-1">
-              TECH
+        {/* Logo Area */}
+        <Link href="/" className="flex items-center gap-3 group">
+          {/* O Ícone ao lado do nome */}
+          <img
+            src="/favicon.ico"
+            alt="Logo Cuba Tech"
+            className="w-10 h-10 object-contain"
+          />
+
+          <div className="flex flex-col items-start">
+            <div className="flex items-center leading-none">
+              <span className="text-2xl font-black tracking-tighter text-white">
+                CUBA
+              </span>
+              <span className="text-2xl font-black tracking-tighter text-gold ml-1">
+                TECH
+              </span>
+            </div>
+            <span
+              className="text-[8px] uppercase tracking-[0.45em] text-gray-400 -mt-1 whitespace-nowrap"
+              style={{ width: "max-content" }}
+            >
+              SOLUÇÕES PARA INFORMÁTICA
             </span>
           </div>
-
-          <span
-            className="text-[9px] font-medium uppercase tracking-[0.38em] text-gray-400 -mt-1 whitespace-nowrap block"
-            style={{
-              marginLeft: "-1.2rem", 
-              width: "max-content",
-            }}
-          >
-            SOLUÇÕES PARA INFORMÁTICA
-          </span>
         </Link>
 
         {/* Desktop Menu */}
@@ -65,8 +67,6 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          
-          
         </div>
 
         {/* Mobile Toggle */}
