@@ -1,26 +1,112 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* 1. Definição do Tema e Variáveis */
+@theme {
+  --color-primary: #a1824a;
+  --color-primary-light: #d4af37;
+  --color-secondary: #1a1a1a;
+  --color-background: #0a0a0a;
+  
+  @keyframes shine {
+    to { background-position: 200% center; }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* 2. Configurações de Base */
+@layer base {
+  body {
+    background-color: black;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+}
+
+/* 3. Utilidades de Estilo e Identidade */
+@layer utilities {
+  /* Menu com efeito de vidro */
+  .glass {
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(161, 130, 74, 0.2);
+  }
+
+  /* Scrollbar Personalizada */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #050505;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #a1824a;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d4af37;
+  }
+}
+
+/* 4. Botões Customizados com Efeito Glow (Brilho) */
+
+/* Botão Principal: Dourado com Brilho Constante e Intenso no Hover */
+.btn-cuba-gold {
+  background-color: #a1824a;
+  color: white !important;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(161, 130, 74, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-cuba-gold:hover {
+  background-color: #d4af37;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Botão Secundário: Transparente que Ganha Brilho Dourado no Hover */
+.btn-cuba-outline {
+  background-color: transparent;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-cuba-outline:hover {
+  border-color: #a1824a;
+  color: #ffffff !important;
+  box-shadow: 0 0 30px rgba(161, 130, 74, 0.4);
+  transform: translateY(-2px);
+}
+
+/* 5. Classes de Suporte para a Marca */
+.text-white {
+  color: #ffffff !important;
+}
+
+.text-gold {
+  color: #a1824a !important; /* Dourado da logo original */
+}
+
+/* Garante que o TECH tenha o brilho dourado se preferir */
+.text-gold-gradient {
+  background: linear-gradient(90deg, #a1824a 0%, #d4af37 50%, #a1824a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
 }
