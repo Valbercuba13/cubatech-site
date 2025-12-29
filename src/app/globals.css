@@ -1,18 +1,22 @@
 @import "tailwindcss";
 
-/* 1. Definição do Tema e Variáveis */
+/* 1. Animação de Fluxo de Metal Nobre (Lento e Viscoso) */
+@keyframes liquid-apple-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 2. Definição do Tema e Variáveis */
 @theme {
   --color-primary: #a1824a;
   --color-primary-light: #d4af37;
   --color-secondary: #1a1a1a;
   --color-background: #0a0a0a;
-  
-  @keyframes shine {
-    to { background-position: 200% center; }
-  }
+  --color-gold: #a1824a;
 }
 
-/* 2. Configurações de Base */
+/* 3. Configurações de Base */
 @layer base {
   body {
     background-color: black;
@@ -23,7 +27,7 @@
   }
 }
 
-/* 3. Utilidades de Estilo e Identidade */
+/* 4. Utilidades de Estilo e Identidade */
 @layer utilities {
   /* Menu com efeito de vidro */
   .glass {
@@ -31,6 +35,34 @@
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(161, 130, 74, 0.2);
+  }
+
+  /* EFEITO APPLE LIQUID GOLD (Contraste Máximo) */
+  .text-metallic-gold {
+    background: linear-gradient(
+      110deg,
+      #8e6e2e 0%,
+      #c6a059 15%,
+      #f8e4a0 30%,
+      #ffffff 45%,
+      #ffffff 55%,
+      #f8e4a0 70%,
+      #c6a059 85%,
+      #8e6e2e 100%
+    ) !important;
+    background-size: 300% auto !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    animation: liquid-apple-flow 8s ease-in-out infinite !important;
+    display: inline-block;
+    
+    /* Simula o chanfrado/relevo 3D da Apple */
+    -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.15);
+    
+    /* Sombra interna e brilho para profundidade */
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5)) brightness(1.1) contrast(1.1);
   }
 
   /* Scrollbar Personalizada */
@@ -49,9 +81,9 @@
   }
 }
 
-/* 4. Botões Customizados com Efeito Glow (Brilho) */
+/* 5. Botões Customizados com Largura Controlada */
 
-/* Botão Principal: Dourado com Brilho Constante e Intenso no Hover */
+/* Botão Principal: Dourado com Glow */
 .btn-cuba-gold {
   background-color: #a1824a;
   color: white !important;
@@ -64,6 +96,16 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .btn-cuba-gold {
+    max-width: 280px;
+  }
 }
 
 .btn-cuba-gold:hover {
@@ -72,7 +114,7 @@
   transform: translateY(-2px);
 }
 
-/* Botão Secundário: Transparente que Ganha Brilho Dourado no Hover */
+/* Botão Secundário: Outline */
 .btn-cuba-outline {
   background-color: transparent;
   color: white !important;
@@ -85,28 +127,24 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .btn-cuba-outline {
+    max-width: 280px;
+  }
 }
 
 .btn-cuba-outline:hover {
   border-color: #a1824a;
-  color: #ffffff !important;
   box-shadow: 0 0 30px rgba(161, 130, 74, 0.4);
   transform: translateY(-2px);
 }
 
-/* 5. Classes de Suporte para a Marca */
-.text-white {
-  color: #ffffff !important;
-}
-
-.text-gold {
-  color: #a1824a !important; /* Dourado da logo original */
-}
-
-/* Garante que o TECH tenha o brilho dourado se preferir */
-.text-gold-gradient {
-  background: linear-gradient(90deg, #a1824a 0%, #d4af37 50%, #a1824a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% auto;
-}
+/* 6. Classes de Suporte */
+.text-white { color: #ffffff !important; }
+.text-gold { color: #a1824a !important; }
